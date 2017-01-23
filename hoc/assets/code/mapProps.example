@@ -1,5 +1,0 @@
-withState(
-  'data',
-  'setData',
-  null
-)
