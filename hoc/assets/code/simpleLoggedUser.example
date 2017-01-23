@@ -1,0 +1,47 @@
+const Username = (props) => (
+  <div>
+    {props.name}
+  </div>
+)
+
+const CurrentUsername =
+  withDefaultProps(
+    { name: 'Anonyme' },
+    Username
+  )
+
+const LoggedUser = fetchData(
+  (props) => fetch('/api/username')
+    .then((response) => response.json()),
+  (props, {data, loading}) => ({
+    ...props,
+    username: data
+  }),
+  CurrentUsername
+)
+
+// Mais j'aime toujours nommer les choses
+
+const withDefaultUsername = (BaseComponent) =>
+  withDefaultProps(
+    ...,
+    BaseComponent
+  )
+
+const fetchUser = (BaseComponent) =>
+  fetchData(
+    ...,
+    BaseComponent
+  )
+
+const LoggedUser =
+  fetchUser(
+    withDefaultUsername(
+      Username
+    )
+  )
+
+const LoggedUser = flowRight(
+  fetchUser,
+  withDefaultUsername
+)(Username)

@@ -1,0 +1,24 @@
+const Username = (props) => (
+  <div>
+    {props.name}
+  </div>
+)
+
+const withDefaultProps = (
+  defaultProps,
+  BaseComponent
+) => {
+  return (props) => {
+    const enhancedProps = {
+      ...defaultProps,
+      ...props
+    }
+
+    return <BaseComponent {...enhancedProps} />
+  }
+}
+
+const CurrentUsername = withDefaultProps(
+  {name: 'Anonyme'},
+  Username
+)

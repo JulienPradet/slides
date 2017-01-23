@@ -1,0 +1,36 @@
+withState(
+  'data',
+  'setData',
+  null
+)(BaseComponent)
+
+mapProps((props) => ({
+  ...props,
+  newProp: {}
+}))(BaseComponent)
+
+withHandlers({
+  (props) => (handlerParams) => {
+    // Faire des choses ici
+  }
+})(BaseComponent)
+
+branch(
+  (props) => props.toto === 'toto',
+  (BaseComponent) => /* Composant si vrai */,
+  (BaseComponent) => /* Composant si faux */,
+)(BaseComponent)
+
+compose(
+  withState('data', 'setData', null),
+  withHandlers({
+    onChange: (props) => (newData) => {
+      props.setData(newData)
+    }
+  }),
+  branch(
+    (props) => !props.data,
+    (BaseComponent) => Spinner,
+    (BaseComponent) => BaseComponent
+  )
+)

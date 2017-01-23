@@ -1,0 +1,46 @@
+const answers = questions
+  .filter((question) => !isTroll(question))
+  .filter((question) => (
+    isStupid(question) || !isStupid(question)
+  ))
+  .map((question) => computeAnswer(question))
+
+// J'aime bien nommer les choses
+
+const isNotTrollQuestion = (question) => (
+  !isTroll(question)
+)
+
+const isStupidOrNot = (question) => (
+  isStupid(question) || !isStupid(question)
+)
+
+const answers = questions
+  .filter(isNotTrollQuestion)
+  .filter(isStupidOrNot)
+  .map(computeAnswer)
+
+// Et parfois je vais trop loin
+
+const filterQuestions = (questions) => (
+  questions
+    .filter(isNotTrollQuestion)
+    .filter(isStupidOrNot)
+)
+
+const getAnswers = (questions) => (
+  questions.map(computeAnswer)
+)
+
+const answers = getAnswers(
+  filterQuestions(questions)
+)
+
+// Et si j'ai envie de faire genre
+
+const answerQuestions = flowLeft(
+  filterQuestions,
+  getAnswers
+)
+
+const answers = answerQuestions(questions)

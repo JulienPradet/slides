@@ -1,0 +1,74 @@
+const User = (props) => (
+  props.loading
+    ? <StylishSpinner />
+    : <div>
+      {props.user.name}
+    </div>
+)
+
+const DumbUser = () => (
+  <div>
+    {props.user.name}
+  </div>
+)
+
+const User = (props) => (
+  props.loading
+    ? <StylishSpinner />
+    : <DumbUser />
+)
+
+const withLoading = (DumbUser) => (
+  (props) => (
+    props.loading
+      ? <StylishSpinner />
+      : <DumbUser />
+  )
+)
+
+const User = withLoading(DumbUser)
+
+const withLoading = (BaseComponent) => (
+  (props) => (
+    props.loading
+      ? <StylishSpinner />
+      : <BaseComponent />
+  )
+)
+
+const withLoading = (
+  (isLoading, BaseComponent) => (
+    (props) => (
+      isLoading(props)
+        ? <StylishSpinner />
+        : <BaseComponent />
+    )
+  )
+)
+
+const User = (
+  withLoading(
+    (props) => props.loading,
+    DumbUser
+  )
+)
+
+(BaseComponent) => (EnhancedComponent)
+
+const withLoading = (
+  (isLoading) => (
+    (BaseComponent) => (
+      (props) => (
+        isLoading(props)
+          ? <StylishSpinner />
+          : <BaseComponent />
+      )
+    )
+  )
+)
+
+const User = (
+  withLoading((props) => props.loading)(
+    DumbUser
+  )
+)

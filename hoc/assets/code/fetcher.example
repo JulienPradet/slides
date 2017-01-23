@@ -1,0 +1,44 @@
+const fetchData = (
+  propsToRequest,
+  addResultToProps,
+  BaseComponent
+) => {
+  return class extends React.Component {
+    constructor () {
+      super()
+      this.state = {
+        data: null,
+        loading: true
+      }
+    }
+
+    componentWillMount () {
+      propsToRequest(props)
+        .then((data) => this.setState(
+          (state) => ({
+            loading: false,
+            data: data
+          })
+        ))
+    }
+
+    render () {
+      const props = addResultToProps(
+        this.props,
+        this.state
+      )
+
+      return <BaseComponent {...props} />
+    }
+  }
+}
+
+const LoggedUser = fetchData(
+  (props) => fetch('/api/me')
+    .then((response) => response.json()),
+  (props, {data, loading}) => ({
+    ...props,
+    username: data
+  }),
+  CurrentUsername
+)
