@@ -1,12 +1,12 @@
 withState(
   'data',
   'setData',
-  null
+  'defaultState'
 )(BaseComponent)
 
 mapProps((props) => ({
   ...props,
-  newProp: {}
+  newProp: 'Yayz!'
 }))(BaseComponent)
 
 withHandlers({

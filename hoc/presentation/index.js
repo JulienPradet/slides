@@ -1,5 +1,5 @@
 import React from 'react'
-import {Spectacle, Deck, Slide, Heading, Appear, Text, CodePane} from 'spectacle'
+import {Spectacle, Deck, Slide, Heading, Appear, Text} from 'spectacle'
 import CodeSlide from 'spectacle-code-slide'
 import preloader from 'spectacle/lib/utils/preloader'
 import createTheme from 'spectacle/lib/themes/default'
@@ -27,12 +27,31 @@ export default class Presentation extends React.Component {
   render () {
     return (
       <Spectacle theme={theme}>
-        <Deck transition={['slide']} transitionDuration={500}>
-          <Slide bgColor='dark'>
-            <Heading size={1} fit caps textColor='green'>
+        <Deck transition={['slide']} transitionDuration={400} progress='bar' controls={false}>
+          <Slide align='center center'>
+            <Heading fit caps textColor='green'>
               &nbsp;HOC&nbsp;
             </Heading>
-            <Heading size={1} fit textColor='light'>
+            <Heading fit textColor='light'>
+              Higher Order Components
+            </Heading>
+          </Slide>
+          <Slide align='center center'>
+            <Heading caps textColor='green'>
+              &nbsp;Julien Pradet&nbsp;
+            </Heading>
+            <Heading textSize='1.1em' textColor='light' margin='2em 0 1em 0'>
+              <a href='https://twitter.com/JulienPradet' style={{color: '#fff', textDecoration: 'none'}}>@JulienPradet</a> - <a href='https://julienpradet.github.io/' style={{color: '#fff', textDecoration: 'none'}}>https://julienpradet.github.io/</a>
+            </Heading>
+            <Heading textSize='1.1em' textColor='light'>
+              @Occitech
+            </Heading>
+          </Slide>
+          <Slide align='center center'>
+            <Heading fit caps textColor='green'>
+              &nbsp;HOC&nbsp;
+            </Heading>
+            <Heading fit textColor='light'>
               Higher Order Components
             </Heading>
           </Slide>
@@ -46,17 +65,55 @@ export default class Presentation extends React.Component {
             </Heading>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
+            <Text textSize='4em' textColor='green'>
               (f) => g
             </Text>
+            <Appear>
+              <Text textSize='2em' textColor='light' margin='1.5em 0 0 0'>
+                (param) => f
+              </Text>
+            </Appear>
+            <Appear>
+              <Text textSize='2em' textColor='light' margin='0.5em 0 0 0'>
+                (f, data) => result
+              </Text>
+            </Appear>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
-              Mais on s'en fout
+            <Text textSize='4em' textColor='green'>
+              Mais c'est compliqué
+            </Text>
+            <Text textSize='2em' textColor='light' margin='1.5em 0 0 0'>
+              Donc on va coder des tableaux
+            </Text>
+          </Slide>
+          <CodeSlide
+            transition={[]}
+            lang='jsx'
+            code={require('raw!../assets/code/array.example')}
+            ranges={[
+              { loc: [0, 6] },
+              { loc: [7, 13] },
+              { loc: [14, 20] },
+              { loc: [21, 27] },
+              { loc: [21, 34] },
+              { loc: [35, 37] },
+              { loc: [38, 45] },
+              { loc: [46, 53] },
+              { loc: [54, 59] },
+              { loc: [60, 67] }
+            ]}
+          />
+          <Slide bgColor='dark'>
+            <Text textSize='2em' textColor='light'>
+              On vient de faire un HOA
+            </Text>
+            <Text textSize='4em' textColor='green'>
+              Higher Order Array
             </Text>
             <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
-                Donc on va coder
+              <Text textSize='2em' margin='1em 0 0 0' textColor='light'>
+                (BaseArray) => EnhancedArray
               </Text>
             </Appear>
           </Slide>
@@ -65,48 +122,41 @@ export default class Presentation extends React.Component {
             lang='jsx'
             code={require('raw!../assets/code/array.example')}
             ranges={[
-              { loc: [0, 6] },
-              { loc: [7, 8] },
-              { loc: [9, 21] },
-              { loc: [22, 23] },
-              { loc: [24, 37] },
-              { loc: [38, 39] },
-              { loc: [40, 46] }
+              { loc: [54, 59] }
             ]}
           />
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
-              On vient de faire un HOA
+            <Text textSize='2em' textColor='light'>
+              Même si pour les puristes
+            </Text>
+            <Text textSize='4em' textColor='green'>
+              HOA est un non-sens
             </Text>
             <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
-                Higher Order Array
-              </Text>
-            </Appear>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
-                (BaseArray) => EnhancedArray
+              <Text textSize='2em' margin='1em 0 0 0' textColor='light'>
+                un array n'est pas une fonction
               </Text>
             </Appear>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='grey'>
-              Même si pour les puristes, HOA est un non-sens
+            <Text textSize='2em' textColor='light'>
+              Ce qui est important ici
+            </Text>
+            <Text textSize='4em' textColor='green'>
+              (Base) => Enhanced
             </Text>
           </Slide>
           {/* Intro composant */}
           <Slide bgColor='dark'>
-            <Heading size={1} fit caps textColor='green'>
-              &nbsp;HOC&nbsp;
-            </Heading>
-          </Slide>
-          <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
+            <Text textSize='12em' textColor='green'>
+              HOC
+            </Text>
+            <Text fit lineHeight={1.5} textColor='light'>
               (BaseComponent) => EnhancedComponent
             </Text>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
+            <Text textSize='4em' lineHeight={1.5} textColor='green'>
               Loader
             </Text>
           </Slide>
@@ -117,26 +167,21 @@ export default class Presentation extends React.Component {
             ranges={[
               { loc: [0, 7] },
               { loc: [3, 6] },
-              { loc: [8, 13] },
-              { loc: [14, 19] },
-              { loc: [20, 29] },
-              { loc: [30, 37] },
-              { loc: [38, 47] },
-              { loc: [38, 54] },
-              { loc: [55, 56] },
-              { loc: [57, 68] },
-              { loc: [69, 74] },
+              { loc: [8, 21] },
+              { loc: [16, 33] },
+              { loc: [24, 43] },
+              { loc: [36, 55] },
+              { loc: [46, 60] },
+              { loc: [56, 64] }
             ]}
           />
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
+            <Text textSize='4em' textColor='green'>
               Requêtes API
             </Text>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
-                Refaire react-refetch
-              </Text>
-            </Appear>
+            <Text textSize='2em' margin='1em 0 0 0' textColor='light'>
+              Un HOC qui fait un fetch<br />
+            </Text>
           </Slide>
           <CodeSlide
             transition={[]}
@@ -144,17 +189,17 @@ export default class Presentation extends React.Component {
             code={require('raw!../assets/code/fetcher.example')}
             ranges={[
               { loc: [0, 5] },
-              { loc: [5, 6] },
-              { loc: [6, 23] },
-              { loc: [24, 32] },
-              { loc: [35, 44] },
-              { loc: [36, 38] },
+              { loc: [0, 6] },
+              { loc: [5, 24] },
+              { loc: [14, 32] },
+              { loc: [34, 44] },
+              { loc: [35, 38] },
               { loc: [38, 42] },
               { loc: [42, 43] }
             ]}
           />
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
+            <Text textSize='4em' textColor='green'>
               Récap'
             </Text>
           </Slide>
@@ -164,31 +209,35 @@ export default class Presentation extends React.Component {
             code={require('raw!../assets/code/simpleLoggedUser.example')}
             ranges={[
               { loc: [0, 5] },
-              { loc: [6, 11] },
-              { loc: [12, 21] },
-              { loc: [22, 23] },
-              { loc: [24, 29] },
-              { loc: [30, 35] },
-              { loc: [36, 42] },
-              { loc: [43, 47] }
+              { loc: [6, 10] },
+              { loc: [11, 22] },
+              { loc: [23, 24] },
+              { loc: [25, 34] },
+              { loc: [35, 43] },
+              { loc: [44, 52] },
+              { loc: [53, 58] },
+              { loc: [59, 66] }
             ]}
           />
+          <Slide bgColor='dark'>
+            <Text textSize='2em' textColor='light'>
+              Pour s'y mettre
+            </Text>
+            <Text textSize='4em' textColor='green'>
+              Classe > HOCs
+            </Text>
+          </Slide>
           {/* Exemple MemoizedFetcher */}
           {/* Recompose */}
           <Slide bgColor='dark'>
-            <Heading size={1} fit caps textColor='green'>
+            <Text textSize='4em' textColor='green'>
               &nbsp;Recompose&nbsp;
-            </Heading>
+            </Text>
             <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
-                Une lib' de HOCs bas niveau
+              <Text textSize='2em' lineHeight={1.5} textColor='light'>
+                des HOCs bas niveau
               </Text>
             </Appear>
-          </Slide>
-          <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
-              (params) => (BaseComponent) => EnhancedComponent
-            </Text>
           </Slide>
           <CodeSlide
             transition={[]}
@@ -204,168 +253,109 @@ export default class Presentation extends React.Component {
             ]}
           />
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='light'>
-              Pour s'y mettre, transformer une classe en une série de HOC
-            </Text>
-          </Slide>
-          <Slide bgColor='dark'>
-            <Heading size={1} fit caps textColor='green'>
+            <Text textSize='4em' textColor='green'>
               &nbsp;Bonnes pratiques&nbsp;
-            </Heading>
+            </Text>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='light'>
-              Toujours respecter la signature
+            <Text textSize='2em' textColor='light'>
+              Respecter la signature
             </Text>
-            <Text size={1} lineHeight={1.5} textColor='light'>
+            <Text textSize='2em' margin='0.5em 0 0 0' textColor='green'>
               (...params) => (BaseComponent) => EnhancedComponent
             </Text>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='light'>
-              Nommer ses paramètres en utilisant un objet
+            <Text textSize='2em' textColor='light'>
+              Les paramètres doivent être des objets
+            </Text>
+            <Text textSize='2em' margin='0.5em 0 0 0' textColor='green'>
+              {'({optionA, optionB, optionC})'}
             </Text>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='light'>
-              Regrouper les parties et les nommer
+            <Text textSize='2em' textColor='light'>
+              Penser à découper et nommer vos `compose`
             </Text>
           </Slide>
           <Slide bgColor='dark'>
-            <Heading size={1} fit caps textColor='green'>
+            <Text textSize='4em' textColor='green'>
               &nbsp;Pourquoi c'est cool ?&nbsp;
-            </Heading>
-          </Slide>
-          <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
-              DRY
             </Text>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
-                Sans le risque de trop coupler les composants
-              </Text>
-            </Appear>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
+            <Text textSize='4em' textColor='green'>
               Lisible
             </Text>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
+              <Text textSize='2em' margin='0.5em 0 0 0' textColor='light'>
                 A condition de nommer convenablement
               </Text>
-            </Appear>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
+            <Text textSize='4em' textColor='green'>
+              SRP
+            </Text>
+              <Text textSize='2em' margin='0.5em 0 0 0' textColor='light'>
+                Fini les classes avec 12 options dans le state
+              </Text>
+          </Slide>
+          <Slide bgColor='dark'>
+            <Text textSize='4em' textColor='green'>
               Testable
             </Text>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
+              <Text textSize='2em' margin='0.5em 0 0 0' textColor='light'>
                 Avec des BaseComponent très dumbs
               </Text>
-            </Appear>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
-              Prototypage rapide
-            </Text>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
-                En réduisant le boilerplate
-              </Text>
-            </Appear>
-          </Slide>
-          <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
-              Separation des responsabilités
-            </Text>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
-                La vue peut ne plus jamais avoir besoin de class
-              </Text>
-            </Appear>
-          </Slide>
-          <Slide bgColor='dark'>
-            <Heading size={1} fit caps textColor='green'>
+            <Text textSize='4em' textColor='green'>
               &nbsp;&nbsp;&nbsp;&nbsp;Et en vrai ?&nbsp;&nbsp;&nbsp;&nbsp;
-            </Heading>
+            </Text>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
-              Gymnastique intellectuelle
+            <Text textSize='4em' textColor='green'>
+              Premiers pas difficiles
             </Text>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
+              <Text textSize='2em' margin='0.5em 0 0 0' textColor='light'>
                 C'est le même effort à fournir que pour<br />
                 Impératif => Fonctionnel
               </Text>
-            </Appear>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
+            <Text textSize='4em' textColor='green'>
               Magique
             </Text>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
+              <Text textSize='2em' margin='0.5em 0 0 0' textColor='light'>
                 Les props viennent de nul part
               </Text>
-            </Appear>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
-              Performance ?
+            <Text textSize='4em' textColor='green'>
+              Mais ça sauve des vies
             </Text>
             <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
-                Si on va trop loin, beaucoup de niveaux d'indirection<br />
-                Et un arbre React qui explose (notamment pour débugger)
-              </Text>
-            </Appear>
-          </Slide>
-          <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
-              Mais on ne peut plus s'en passer
-            </Text>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
+              <Text textSize='2em' margin='0.5em 0 0 0' textColor='light'>
                 Quand on a compris le fonctionnement
               </Text>
             </Appear>
           </Slide>
           <Slide bgColor='dark'>
-            <Heading size={1} fit caps textColor='green'>
-              &nbsp;&nbsp;&nbsp;&nbsp;Et sinon ?&nbsp;&nbsp;&nbsp;&nbsp;
-            </Heading>
-          </Slide>
-          <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
-              Function as Children
+            <Text textSize='4em' textColor='green'>
+              Et surtout
             </Text>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
-                C'est le même concept<br />mais on le fait directement dans le JSX
+              <Text textSize='1.9em' margin='0.5em 0 0 0' textColor='light'>
+                Maîtriser la composition vous sera utile partout<br />
+                React ou pas. Front ou Back.
               </Text>
-            </Appear>
           </Slide>
           <Slide bgColor='dark'>
-            <Text size={1} lineHeight={1.5} textColor='green'>
-              Avec des Observables et mapPropsStream
-            </Text>
-            <Appear>
-              <Text size={1} lineHeight={1.5} textColor='light'>
-                Pour le code qui n'est pas en rapport avec la vue
-              </Text>
-            </Appear>
-          </Slide>
-          <Slide bgColor='dark'>
-            <Heading size={1} lineHeight={1.1} caps textColor='green'>
+            <Text textSize='4em' textColor='green'>
               Merci
-            </Heading>
-            <Heading size={1} lineHeight={1.1} textColor='light'>
-              Questions ?
-            </Heading>
-            <Text size={1} lineHeight={5} textColor='light'>
+            </Text>
+            <Text textSize='2em' textColor='light'>
+              Des questions ?
+            </Text>
+            <Text margin='2em 0 0 0' textColor='light'>
               Julien Pradet - @JulienPradet
             </Text>
           </Slide>

@@ -1,43 +1,64 @@
+// Map
+const numbers = [1, 2, 3, 4]
+numbers.map(function plus2 (number) {
+  return number + 2
+})
+// => [3, 4, 5, 6]
+
+// Filter
+const numbers = [1, 2, 3, 4]
+numbers.filter(function isOdd (number) {
+  return number % 2 === 0
+})
+// => [2, 4]
+
+// Arrow Function
+function toto (param) {
+  return result
+}
+// équivalent à
+const toto = (param) => result
+
+// Répondre à des questions
 const answers = questions
-  .filter((question) => !isTroll(question))
-  .filter((question) => (
-    isStupid(question) || !isStupid(question)
-  ))
-  .map((question) => computeAnswer(question))
+.filter((question) => isNotTroll(question))
+.filter((question) => canIAnswer(question))
+.map((question) => rephraseIfNeeded(question))
+.map((question) => computeAnswer(question))
 
-// J'aime bien nommer les choses
-
-const isNotTrollQuestion = (question) => (
-  !isTroll(question)
-)
-
-const isStupidOrNot = (question) => (
-  isStupid(question) || !isStupid(question)
-)
-
+// Les fonctions sont des paramètres
 const answers = questions
-  .filter(isNotTrollQuestion)
-  .filter(isStupidOrNot)
+  .filter(isNotTroll)
+  .filter(canIAnswer)
+  .map(rephraseIfNeeded)
   .map(computeAnswer)
 
-// Et parfois je vais trop loin
+// /!\ Attention à la lisibilté
+// On nomme chaque partie
 
-const filterQuestions = (questions) => (
-  questions
-    .filter(isNotTrollQuestion)
-    .filter(isStupidOrNot)
-)
+function filterQuestions (questions) {
+  return (
+    questions
+      .filter(isNotTroll)
+      .filter(canIAnswer)
+  )
+}
 
-const getAnswers = (questions) => (
-  questions.map(computeAnswer)
-)
+function getAnswers (questions) {
+  return (
+    questions
+      .map(rephraseIfNeeded)
+      .map(computeAnswer)
+  )
+}
 
-const answers = getAnswers(
+const valuableQuestions =
   filterQuestions(questions)
-)
 
-// Et si j'ai envie de faire genre
+const answers =
+  getAnswers(valuableQuestions)
 
+// Et si on veut avoir la classe
 const answerQuestions = flowLeft(
   filterQuestions,
   getAnswers

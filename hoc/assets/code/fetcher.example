@@ -1,8 +1,8 @@
-const fetchData = (
-  propsToRequest,
+const fetchData = ({
+  getRequest,
   addResultToProps,
   BaseComponent
-) => {
+}) => {
   return class extends React.Component {
     constructor () {
       super()
@@ -13,13 +13,12 @@ const fetchData = (
     }
 
     componentWillMount () {
-      propsToRequest(props)
-        .then((data) => this.setState(
-          (state) => ({
-            loading: false,
-            data: data
-          })
-        ))
+      getRequest(props)
+        .then((res) => res.json())
+        .then((data) => this.setState({
+          loading: false,
+          data: data
+        })
     }
 
     render () {
@@ -33,12 +32,13 @@ const fetchData = (
   }
 }
 
-const LoggedUser = fetchData(
-  (props) => fetch('/api/me')
-    .then((response) => response.json()),
-  (props, {data, loading}) => ({
+const LoggedUser = fetchData({
+  getRequest: (props) => (
+    fetch('/api/me')
+  ),
+  addResultToProps: (props, result) => ({
     ...props,
-    username: data
+    user: result.data
   }),
-  CurrentUsername
-)
+  BaseComponent: User
+})
