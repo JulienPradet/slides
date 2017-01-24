@@ -1,23 +1,21 @@
-// Map
-const numbers = [1, 2, 3, 4]
-numbers.map(function plus2 (number) {
-  return number + 2
-})
-// => [3, 4, 5, 6]
-
-// Filter
-const numbers = [1, 2, 3, 4]
-numbers.filter(function isOdd (number) {
-  return number % 2 === 0
-})
-// => [2, 4]
-
-// Arrow Function
+// Arrow Function ========================
 function toto (param) {
   return result
 }
 // équivalent à
 const toto = (param) => result
+
+// Map ===================================
+const numbers = [1, 2, 3, 4]
+const plus2 = (number) => number + 2
+numbers.map(plus2)
+// => [3, 4, 5, 6]
+
+// Filter ================================
+const numbers = [1, 2, 3, 4]
+const isOdd = (number) => number % 2 === 0
+numbers.filter(isOdd)
+// => [2, 4]
 
 // Répondre à des questions
 const answers = questions

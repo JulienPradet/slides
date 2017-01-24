@@ -93,15 +93,15 @@ export default class Presentation extends React.Component {
             code={require('raw!../assets/code/array.example')}
             ranges={[
               { loc: [0, 6] },
-              { loc: [7, 13] },
-              { loc: [14, 20] },
-              { loc: [21, 27] },
-              { loc: [21, 34] },
-              { loc: [35, 37] },
-              { loc: [38, 45] },
-              { loc: [46, 53] },
-              { loc: [54, 59] },
-              { loc: [60, 67] }
+              { loc: [0, 12] },
+              { loc: [0, 18] },
+              { loc: [19, 25] },
+              { loc: [19, 32] },
+              { loc: [33, 35] },
+              { loc: [36, 43] },
+              { loc: [44, 51] },
+              { loc: [52, 57] },
+              { loc: [58, 65] }
             ]}
           />
           <Slide bgColor='dark'>
@@ -122,7 +122,7 @@ export default class Presentation extends React.Component {
             lang='jsx'
             code={require('raw!../assets/code/array.example')}
             ranges={[
-              { loc: [54, 59] }
+              { loc: [52, 57] }
             ]}
           />
           <Slide bgColor='dark'>
@@ -248,8 +248,7 @@ export default class Presentation extends React.Component {
               { loc: [6, 10] },
               { loc: [11, 16] },
               { loc: [17, 22] },
-              { loc: [23, 24] },
-              { loc: [24, 35] }
+              { loc: [23, 35] }
             ]}
           />
           <Slide bgColor='dark'>
@@ -274,8 +273,8 @@ export default class Presentation extends React.Component {
             </Text>
           </Slide>
           <Slide bgColor='dark'>
-            <Text textSize='2em' textColor='light'>
-              Penser à découper et nommer vos `compose`
+            <Text textSize='2em' textColor='green'>
+              Découper et Nommer vos `compose`
             </Text>
           </Slide>
           <Slide bgColor='dark'>
@@ -326,7 +325,7 @@ export default class Presentation extends React.Component {
               Magique
             </Text>
               <Text textSize='2em' margin='0.5em 0 0 0' textColor='light'>
-                Les props viennent de nul part
+                Les props viennent de nulle part
               </Text>
           </Slide>
           <Slide bgColor='dark'>
