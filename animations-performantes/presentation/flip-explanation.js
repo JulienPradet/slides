@@ -161,7 +161,10 @@ class Animation extends Component {
   }
 }
 
-const displayPosition = ({ top, left }) => `{ top: ${top}, left: ${left} }`;
+const displayPosition = ({ top, left }, split = false) =>
+  [split ? null : "{", `top: ${top},`, `left: ${left}`, split ? null : "}"]
+    .filter(e => Boolean(e))
+    .join(split ? "\n" : " ");
 
 class FlipExplanation extends Component {
   constructor() {
@@ -273,7 +276,10 @@ class FlipExplanation extends Component {
               </div>
               <div style={{ color: "#ffffff" }}>
                 = <code>
-                  {displayPosition(invert)}
+                  {displayPosition({
+                    top: last.top - invert.top,
+                    left: last.left - invert.left
+                  })}
                 </code>
               </div>
             </div>
@@ -289,6 +295,26 @@ class FlipExplanation extends Component {
               <div>
                 <strong>PLAY :</strong> On diminue petit à petit la différence
               </div>
+              <div
+                style={{
+                  color: "#ffffff",
+                  textAlign: "left",
+                  maxWidth: "18em",
+                  margin: "0 auto"
+                }}
+              >
+                <pre>
+                  <code>
+                    {displayPosition(
+                      {
+                        top: `${last.top} - ${invert.top} * (1 - progress)`,
+                        left: `${last.left} - ${invert.left} * (1 - progress)`
+                      },
+                      true
+                    )}
+                  </code>
+                </pre>
+              </div>
             </div>
           )
         };
@@ -301,6 +327,26 @@ class FlipExplanation extends Component {
             <div>
               <div>
                 <strong>PLAY :</strong> On diminue petit à petit la différence
+              </div>
+              <div
+                style={{
+                  color: "#ffffff",
+                  textAlign: "left",
+                  maxWidth: "18em",
+                  margin: "0 auto"
+                }}
+              >
+                <pre>
+                  <code>
+                    {displayPosition(
+                      {
+                        top: `${last.top} - ${invert.top} * (1 - progress)`,
+                        left: `${last.left} - ${invert.left} * (1 - progress)`
+                      },
+                      true
+                    )}
+                  </code>
+                </pre>
               </div>
             </div>
           )

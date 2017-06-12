@@ -127,12 +127,17 @@ export default class Presentation extends React.Component {
           </Heading>
           <Appear transitionDuration={appearDuration}>
             <Text textColor="tertiary" textSize="1em" margin="0.6em 0 0 0">
-              Dernier levier pour vaincre les Apps mobile
+              Dernier levier vs les Apps natives
             </Text>
           </Appear>
           <Appear transitionDuration={appearDuration}>
-            <Text textColor="quaternary" textSize="0.8em" margin="0.6em 0 0 0">
-              (ou presque)
+            <Text textColor="tertiary" textSize="1em" margin="2em 0 0 0">
+              Choisir en fonction du besoin<br />
+            </Text>
+          </Appear>
+          <Appear transitionDuration={appearDuration}>
+            <Text textColor="tertiary" textSize="1em" margin="0.3em 0 0 0">
+              Pas en fonction des possibilités
             </Text>
           </Appear>
         </Slide>
@@ -140,11 +145,9 @@ export default class Presentation extends React.Component {
           <Heading textSize="2em" textColor="secondary">
             Animations
           </Heading>
-          <Appear transitionDuration={appearDuration}>
-            <Heading textColor="tertiary" textSize="2.5em" margin="0 0 0 0">
-              Performantes
-            </Heading>
-          </Appear>
+          <Heading textColor="tertiary" textSize="2.5em" margin="0 0 0 0">
+            Performantes
+          </Heading>
           <Appear transitionDuration={appearDuration}>
             <Text textColor="tertiary" textSize="1em" margin="1em 0 0 0">
               = 60fps
@@ -476,7 +479,7 @@ export default class Presentation extends React.Component {
           </Text>
           <Appear transitionDuration={appearDuration}>
             <Text textColor="tertiary" textSize="0.8em" margin="0.6em 0 0 0">
-              `will-change`
+              + `will-change`
             </Text>
           </Appear>
         </Slide>
@@ -627,7 +630,7 @@ export default class Presentation extends React.Component {
             Merci
           </Heading>
           <Text textSize="1em" margin="0.6em 0 0 0" textColor="tertiary">
-            Des questions ?
+            Des questions ? :)
           </Text>
           <Text textSize="0.6em" textColor="quaternary" margin="1em 0 0 0">
             <a
