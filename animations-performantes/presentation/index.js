@@ -80,7 +80,7 @@ export default class Presentation extends React.Component {
         transition={["fade"]}
         transitionDuration={transitionDuration}
         theme={theme}
-        controls={false}
+        controls={true}
         progress="none"
       >
         <Slide margin="1em 0 0 0" maxWidth="auto" align="center flex-start">
@@ -128,6 +128,11 @@ export default class Presentation extends React.Component {
           <Appear transitionDuration={appearDuration}>
             <Text textColor="tertiary" textSize="1em" margin="0.6em 0 0 0">
               Dernier levier vs les Apps natives
+            </Text>
+          </Appear>
+          <Appear transitionDuration={appearDuration}>
+            <Text textColor="quaternary" textSize="0.8em" margin="0.6em 0 0 0">
+              (ou presque)
             </Text>
           </Appear>
           <Appear transitionDuration={appearDuration}>
@@ -498,6 +503,11 @@ export default class Presentation extends React.Component {
               >
                 Détails
               </a>
+              <div style={{ margin: "0.6em 0 0 0" }}>
+                <a href="https://csstriggers.com/" style={{ color: "inherit" }}>
+                  CSS triggers
+                </a>
+              </div>
             </Text>
           </Appear>
         </Slide>
@@ -554,13 +564,23 @@ export default class Presentation extends React.Component {
             Demo
           </Heading>
           <Text textColor="quaternary" textSize="0.8em" margin="0.6em 0 0 0">
-            TODO Lien Github
+            <a
+              href="https://github.com/JulienPradet/slides/tree/master/animations-performantes/examples"
+              style={{ color: "inherit" }}
+            >
+              Voir sur Github
+            </a>
           </Text>
         </Slide>
         <Slide margin="1em 0 0 0" maxWidth="auto" align="center flex-start">
           <Heading textSize="2em" textColor="secondary">
             Avantages
           </Heading>
+          <Appear transitionDuration={appearDuration}>
+            <Text textColor="tertiary" textSize="0.8em" margin="0.6em 0 0 0">
+              S'adapte par défaut au reste du DOM
+            </Text>
+          </Appear>
           <Appear transitionDuration={appearDuration}>
             <Text textColor="tertiary" textSize="0.8em" margin="0.6em 0 0 0">
               Pas besoin de gérer l'animation

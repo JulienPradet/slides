@@ -358,7 +358,15 @@ class FlipExplanation extends Component {
           explanation: (
             <div>
               <div>Quel est le principe&nbsp;?</div>
-              <div style={{ fontSize: "2em" }}><strong>↓</strong></div>
+              <div
+                style={{
+                  fontSize: "0.8em",
+                  margin: "1em 0 0 0",
+                  color: "white"
+                }}
+              >
+                <strong>↓</strong> flèche du bas <strong>↓</strong>
+              </div>
             </div>
           )
         };
