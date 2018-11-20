@@ -30,7 +30,9 @@ import createTheme from 'spectacle/lib/themes/default';
 const images = {
 	carbonStorybook: require('./assets/carbon-storybook.png'),
   listeStorybook: require('./assets/liste-storybook.png'),
-  specsStorybook: require('./assets/specs.png')
+  specsStorybook: require('./assets/specs.png'),
+  infoaddon: require('./assets/infoaddon.png'),
+  knobs: require('./assets/knobs.png')
 };
 
 // Require CSS
@@ -75,6 +77,7 @@ export default class Presentation extends React.Component {
         transition={[]}
         transitionDuration={0}
         theme={theme}
+        progress="none"
       >
 				<Slide align="center center">
 					<Heading textSize="2.2em" fit>
@@ -119,9 +122,9 @@ export default class Presentation extends React.Component {
 					</Text>
 				</Slide>
 				<Slide align="center center">
-					<Heading textSize="2.2em">
+					<Text textSize="2.2em">
 						<span style={{color: '#fff'}}>Pourquoi vous parler de</span> Storybook ?
-					</Heading>
+					</Text>
 				</Slide>
         <Slide>
           <Text textSize="1.5em">Référence de l'écosystème React</Text>
@@ -165,7 +168,7 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
         <Slide>
-          <Heading textSize="2em" margin="0 0 0.5em 0">Storybook</Heading>
+          <Text textSize="2em" margin="0 0 0.5em 0">Storybook</Text>
 					<Image height="60vh" alt="Screenshot of the storybook of Lonely Planet" src={images.carbonStorybook} />
           <Cite>Lonely Planet UI</Cite>
         </Slide>
@@ -209,7 +212,7 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Text textSize="2em">
-            Hot reload gratuit, rapide<br />
+            Hot reload gratuit<br />
             <span style={{color: secondary}}>D</span>eveloper E<span style={{color: secondary}}>X</span>perience++
           </Text>
         </Slide>
@@ -314,6 +317,11 @@ export default class Presentation extends React.Component {
               pour continuer de développer une application.
             </Text>
           </Appear>
+          <Appear>
+            <Text textSize="0.8em" margin="0.5em 0 0 0" style={{fontStyle: 'italic'}}>
+              &ndash; Moi, dans mon salon
+            </Text>
+          </Appear>
         </Slide>  
         <Slide>
           <Text textSize="1.8em" textColor="secondary">C'est quoi un Design System ?</Text>
@@ -321,6 +329,9 @@ export default class Presentation extends React.Component {
             Un outil de communication pour que <span style={{color: secondary}}>chaque intervenant</span>{" "}
             puisse identifier les méthodes et outils existants
             pour continuer de développer une application.
+          </Text>
+          <Text textSize="0.8em" margin="0.5em 0 0 0" style={{fontStyle: 'italic'}}>
+            &ndash; Moi, dans mon salon
           </Text>
         </Slide>
         <Slide>
@@ -353,19 +364,18 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
-            Pour les designers ?
+            Pour les concepteur&sdot;rice&sdot;s ?
           </Text>
-          <Appear><Text textSize="1.4em" margin="0 0 0 0">Les impliquer lors de la création des composants.</Text></Appear>
+          <Appear><Text textSize="1.4em" margin="0 0 0 0">Impliquer lors de la création des composants.</Text></Appear>
           <Appear><Text textSize="1.4em" margin="0 0 0 0">Bien séparer les composants d'UI des composants métiers.</Text></Appear>
         </Slide>
         <Slide>
           <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
-            Pour les décideurs ?
+            Pour les décideur&sdot;se&sdot;s ?
           </Text>
-          <Appear><Text textSize="1.4em" margin="0 0 0 0">Demander leur avis sur les guidelines générales.</Text></Appear>
+          <Appear><Text textSize="1.4em" margin="0 0 0 0">Impliquer sur les guidelines générales.</Text></Appear>
           <Appear><Text textSize="1.4em" margin="0 0 0 0">Régulièrement utiliser le design system comme base de discussion.</Text></Appear>
-          <Appear><Text textSize="1.4em" margin="0 0 0 0">C'est difficile.</Text></Appear>
-          <Appear><Text textSize="1.4em" margin="0 0 0 0">C'est moche.</Text></Appear>
+          <Appear><Text textSize="1.4em" margin="0.5em 0 0 0">C'est difficile.</Text></Appear>
         </Slide>
         <Slide>
           <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
@@ -379,46 +389,127 @@ export default class Presentation extends React.Component {
           <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
             Comment faire tout ça dans Storybook ?
           </Text>
+        </Slide>
+        <Slide>
           <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
-            Info Addon https://github.com/storybooks/storybook/tree/master/addons/info
-            Knobs Addon https://github.com/storybooks/storybook/tree/master/addons/knobs
-            Links Addon https://github.com/storybooks/storybook/tree/master/addons/links
-            Readme Addon https://github.com/tuchk4/storybook-readme
+            <a style={{color: 'currentColor'}} href="https://github.com/storybooks/storybook/tree/master/addons/info">Info Addon</a>
+
+					  <Image height="60vh" alt="Infoaddon example" src={images.infoaddon} />
+          </Text>
+        </Slide>
+        <Slide>
+          <div style={{fontSize: "2em"}}>
+            <CodePane
+              fit
+              theme="external"
+              lang="js"
+              source={require("./assets/infoaddon.example").default}
+            />
+          </div>
+        </Slide>
+        <Slide>
+          <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
+            <a style={{color: 'currentColor'}} href="https://github.com/storybooks/storybook/tree/master/addons/knobs">Knobs Addon</a>
+
+					  <Image height="60vh" alt="Infoaddon example" src={images.knobs} />
+          </Text>
+        </Slide>
+        <Slide>
+          <div style={{fontSize: "2em"}}>
+            <CodePane
+              fit
+              theme="external"
+              lang="js"
+              source={require("./assets/knobs.example").default}
+            />
+          </div>
+        </Slide>
+        <Slide>
+          <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
+            <a style={{color: 'currentColor'}} href="https://github.com/storybooks/storybook/tree/master/addons/links">Links Addon</a>
+          </Text>
+        </Slide>
+        <Slide>
+          <div style={{fontSize: "2em"}}>
+            <CodePane
+              fit
+              theme="external"
+              lang="js"
+              source={require("./assets/links.example").default}
+            />
+          </div>
+        </Slide>
+        <Slide>
+          <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
+            <a style={{color: 'currentColor'}} href="https://github.com/tuchk4/storybook-readme">Readme Addon<Appear><span> ?</span></Appear></a>
+          </Text>
+          <Appear>
+            <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
+              <a style={{color: '#fff', textDecoration: 'none'}} href="https://github.com/mdx-js/mdx">Plutôt une story avec du markdown</a>
+            </Text>
+          </Appear>
+        </Slide>
+        <Slide>
+          <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
+            Intégration d'un système de commentaire ?
+          </Text>
+          <Text textColor="tertiary" textSize="1.7em" margin="0 0 0.5em 0">
+            Disqus (ou isso)
           </Text>
         </Slide>
         <Slide>
           <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
-            Intégration avec un système de commentaire ?
-          </Text>
-          <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
-            Disqus ou autre alternative
+            <a style={{color: '#fff', textDecoration: 'none'}} href="https://storybook.js.org/addons/addon-gallery/">
+              Potentiellement plein d'autres
+            </a>
           </Text>
         </Slide>
         <Slide>
           <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
-            Pas de reste miracle
+            Pas de recette miracle
           </Text>
-          <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
-            Il va falloir investir du temps.
+          <Text textColor="tertiary" textSize="1.7em" margin="0 0 0.5em 0">
+            Il faut du temps.<br />
             Rédiger, confronter, itérer.
-            Ce qui aura le plus de valeur est le fait d'avoir pensé du temps à réfléchir à tout ça.
           </Text>
+          <Appear>
+            <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
+              Y réfléchir, c'est déjà cool !
+            </Text>
+          </Appear>
         </Slide>
         <Slide>
-          <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
-            N'oubliez pas qu'un Design System va dépendre de votre organisation.
-            Reflète souvent assez bien le fonctionnement interne des entreprises.
+          <Text textSize="1.7em" margin="0 0 0.5em 0">
+            Un Design System dépend de votre équipe.
           </Text>
+          <Appear>
+            <Text textColor="secondary" textSize="1.7em" margin="0 0 0.5em 0">
+              Trouvez votre fonctionnement.
+            </Text>
+          </Appear>
+        </Slide>
+        <Slide>
+          <Text textSize="1.7em" textColor="secondary" margin="0 0 0.5em 0">
+            Références
+          </Text>
+          <List textColor="tertiary">
+            <ListItem textSize="1em" margin="0 0 0.5em 0²²²²">
+              @yaili - <a style={{color: 'currentColor'}} href="https://youtu.be/Z7vapa6p92k?t=5603">Encouraging participation and contributions to your design system</a>
+            </ListItem>
+            <ListItem textSize="1em">
+              @brad_frost - <a style={{color: 'currentColor'}} href="http://bradfrost.com/blog/post/style-guide-guide-gatsby-edition/">style guide guide, gatsby edition</a>
+            </ListItem>
+          </List>
         </Slide>
         <Slide bgColor='dark'>
           <Text textSize='4em' textColor='secondary'>
             Merci
           </Text>
-          <Text textSize='2em' textColor='light'>
-            Dispo pour des questions<br />
+          <Text textSize='1em' textColor='light'>
+            Des questions ?<br /><br />
             🐼
           </Text>
-          <Text margin='2em 0 0 0' textColor='light'>
+          <Text textSize="1em" margin='2em 0 0 0' textColor='light'>
             Julien Pradet - @JulienPradet
           </Text>
         </Slide>
