@@ -66,13 +66,7 @@ theme.screen.components.code.background = "#545454";
 export default class Presentation extends React.Component {
   render() {
     return (
-      <Deck
-        transition={[]}
-        transitionDuration={0}
-        theme={theme}
-        progress="none"
-        controls={false}
-      >
+      <Deck transition={[]} transitionDuration={0} theme={theme}>
         <Slide align="center center">
           <Heading textSize="2.2em" fit>
             <span style={{ color: "#fff" }}>Passer de</span> Storybook
